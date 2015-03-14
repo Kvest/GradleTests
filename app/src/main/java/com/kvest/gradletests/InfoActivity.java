@@ -5,6 +5,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import java.io.ByteArrayInputStream;
@@ -51,6 +52,7 @@ public class InfoActivity extends ActionBarActivity {
             e.printStackTrace();
         }
 
+        new ShowTime().subscribe(InfoActivity.this, getWindow());
     }
 
     private String getCertificateSHA1Fingerprint() {
