@@ -5,8 +5,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.TextView;
 
 import java.io.ByteArrayInputStream;
@@ -17,11 +15,9 @@ import java.security.cert.CertificateEncodingException;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
-import java.util.Iterator;
-import java.util.List;
-
 
 public class InfoActivity extends ActionBarActivity {
+    private TextView packageName;
     private TextView sh1;
     private TextView debug;
     private TextView permissions;
@@ -31,12 +27,14 @@ public class InfoActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
 
+        packageName = (TextView) findViewById(R.id.package_name);
         sh1 = (TextView) findViewById(R.id.sha1);
         debug = (TextView) findViewById(R.id.debug);
         permissions = (TextView) findViewById(R.id.permissions);
 
+        packageName.setText(getPackageName());
         sh1.setText(getCertificateSHA1Fingerprint());
-        debug.setText("BuildConfig.DEBUG=" + BuildConfig.DEBUG + ", BuildConfig.FLAVOR=" + BuildConfig.FLAVOR + ", BuildConfig.BUILD_TYPE" + BuildConfig.BUILD_TYPE);
+        debug.setText("BuildConfig.DEBUG=" + BuildConfig.DEBUG + ", BuildConfig.FLAVOR=" + BuildConfig.FLAVOR + ", BuildConfig.BUILD_TYPE=" + BuildConfig.BUILD_TYPE);
 
 
         try {
