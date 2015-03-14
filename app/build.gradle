@@ -24,7 +24,7 @@ android {
     buildTypes {
         release {
             minifyEnabled true
-            setShrinkResources(true)
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
@@ -36,6 +36,11 @@ android {
 }
 
 dependencies {
+    repositories {
+        mavenCentral()
+    }
+
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:21.0.3'
+    debugCompile 'com.sothree.slidinguppanel:library:3.0.0'
 }
